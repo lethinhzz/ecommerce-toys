@@ -24,6 +24,10 @@ const Sidebar = () => {
                 <i className="fa-solid fa-check-to-slot text-xl"></i>
                 <p className='hidden md:block'>Orders</p>
             </NavLink>
+             <NavLink to={'/'} className='flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l'>
+                <i className="fa-solid fa-check-to-slot text-xl"></i>
+                <p className='hidden md:block'>DashBoard</p>
+            </NavLink>
         </div>
     </div>
   )

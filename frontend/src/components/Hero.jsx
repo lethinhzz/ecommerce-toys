@@ -19,7 +19,7 @@ const Hero = () => {
                 </div>
                 <div className="w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0">
                     <div className='p-10 py-30'>
-                        <img src="https://demo.assets.templately.com/woo/elementor/33/2024/03/93f96b1b-img-1.png" id="maybay" alt=""/>
+                        <img src="https://demo.assets.templately.com/woo/elementor/33/2024/03/93f96b1b-img-1.png" id="fly" alt=""/>
                     </div>
                 </div>
         </div>

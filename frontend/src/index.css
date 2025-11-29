@@ -20,7 +20,7 @@ a.active p{
         transform: translateX(-2%);
     }
 }
-#maybay {
+#fly {
     animation: moveLeftRight 5s infinite;
 }
 

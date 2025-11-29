@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from "react";
 import AddCategory from "./pages/AddCategory.jsx";
 import ListCategory from "./pages/ListCategory.jsx";
+import Dashboard from './pages/Dashboard';
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL
 export const currency = '$'
@@ -40,6 +41,7 @@ const App = () => {
                 <Route path="/orders" element={<Orders token={token} />} />
                 <Route path="/addCategory" element={<AddCategory token={token} />} />
                 <Route path="/listCategory" element={<ListCategory token={token} />} />
+                <Route path="/" element={<Dashboard token={token} />} />
               </Routes>
             </div>
           </div>

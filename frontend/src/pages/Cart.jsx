@@ -11,24 +11,26 @@ const Cart = () => {
     if (products.length > 0) {
       const tempData = [];
       for (const itemID in cartItems) {
-      const quantity = cartItems[itemID];
-      if (quantity > 0) {
-        tempData.push({
-          _id: itemID,
-          quantity: quantity,
-        });
+        const quantity = cartItems[itemID];
+        if (quantity > 0) {
+          tempData.push({
+            _id: itemID,
+            quantity: quantity,
+          });
+        }
       }
+      setCartData(tempData)
     }
-    setCartData(tempData)
-    }
-    
-  }, [cartItems,products])
+
+  }, [cartItems, products])
 
   return (
-   <div className='border-t pt-14 px-14'>
-        <div className='text-2xl mb-3'><Title text1={'Your'} text2={'Cart'}/></div>
-        <div>
-          {
+    <div className='border-t pt-14 px-14'>
+      <div className='text-2xl mb-3'><Title text1={'Your'} text2={'Cart'} /></div>
+      {cartData.length === 0
+        ? <p className="text-gray-700">Your cart is empty.</p>
+        : <div>
+        {
           cartData.map((item, index) => {
             const productData = products.find((product) => product._id === item._id);
             return (
@@ -41,23 +43,30 @@ const Cart = () => {
                       <p>{productData.price}{currency}</p>
                     </div>
                   </div>
-                </div> 
+                </div>
                 <input onChange={(e) => e.target.value === '' || e.target.value === '0' ? null : updateQuantity(item._id, Number(e.target.value))} className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1 ' type="number" min={1} defaultValue={item.quantity} />
-                <i onClick={() => updateQuantity(item._id, 0)} className="fa-solid fa-trash-can text-xl cursor-pointer"></i> 
+                <i onClick={() => updateQuantity(item._id, 0)} className="fa-solid fa-trash-can text-xl cursor-pointer"></i>
               </div>
             )
           })
-          }
-        </div>
+        }
+      </div>
+      }
+
       
-          <div className='flex justify-end my-20'>
-            <div className='w-full sm:w-[450px]'>
-              <CartTotal />
-              <div className='w-full text-end'>
-                <button onClick={() => navigate('/place-order')} className='bg-orange-500 text-white text-sm my-8 px-8 py-3 cursor-pointer'>PROCEED TO CHECKOUT</button>
-              </div>
-            </div>
+{cartData.length === 0
+  ? ''
+  : <div className='flex justify-end my-20'>
+        <div className='w-full sm:w-[450px]'>
+          <CartTotal />
+          <div className='w-full text-end'>
+            <button onClick={() => navigate('/place-order')} className='bg-orange-500 text-white text-sm my-8 px-8 py-3 cursor-pointer'>PROCEED TO CHECKOUT</button>
           </div>
+        </div>
+      </div>
+}
+
+      
     </div>
   )
 }
